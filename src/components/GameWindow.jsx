@@ -1,8 +1,9 @@
 import React from 'react';
-import {Box} from '@material-ui/core';
+import {Box, Typography} from '@material-ui/core';
 import {useLocation} from 'react-router-dom';
 import routes from '../routes';
 import CenteringBox from './CenteringBox';
+import MainMenu from './MainMenu';
 
 const GameWindow = () => {
   const gameRoute = useLocation().pathname;
@@ -11,7 +12,7 @@ const GameWindow = () => {
   switch (gameRoute) {
     default:
     case routes.MAIN:
-      windowContent = <h3>Main</h3>;
+      windowContent = <MainMenu />;
       break;
     case routes.LEVELSELECT:
       windowContent = <h3>Level Select</h3>;
@@ -22,9 +23,14 @@ const GameWindow = () => {
   }
 
   return (
-    <CenteringBox>
-      <Box id="game-window">{windowContent}</Box>
-    </CenteringBox>
+    <>
+      <Typography variant="h6">Welcome to Algo-Robo!</Typography>
+      <CenteringBox height="80%" margin={2} bgcolor="coral">
+        <Box height="80%" width="80%" id="game-window" bgcolor="lightblue">
+          {windowContent}
+        </Box>
+      </CenteringBox>
+    </>
   );
 };
 

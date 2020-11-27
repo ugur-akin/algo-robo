@@ -3,7 +3,14 @@ import {Box} from '@material-ui/core';
 
 const CenteringBox = React.forwardRef(({children, ...props}) => {
   return (
-    <Box display="flex" alignItems="center" justifyContent="center" {...props}>
+    <Box
+      height="100%"
+      width="100%"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      {...props}
+    >
       {children}
     </Box>
   );
