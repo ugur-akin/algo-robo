@@ -1,22 +1,11 @@
-import {Box, Button} from '@material-ui/core';
+import {Box} from '@material-ui/core';
 import React from 'react';
+import routes from '../routes';
 import CenteringBox from './CenteringBox';
 import MenuButton from './MenuButton';
 
-const MainMenu = ({loadLevels}) => {
+const MainMenu = () => {
   return (
-    // <div className="col-6 offset-3 d-flex flex-column justify-content-center">
-    //   <button
-    //     onClick={loadLevels}
-    //     type="button"
-    //     className="btn btn-lg btn-outline-primary m-3"
-    //   >
-    //     Select Level
-    //   </button>
-    //   <button type="button" className="btn btn-lg btn-outline-primary m-3">
-    //     Options
-    //   </button>
-    // </div>
     <CenteringBox>
       <Box
         id="main-menu"
@@ -27,10 +16,10 @@ const MainMenu = ({loadLevels}) => {
         width="50%"
         height="50%"
       >
-        <MenuButton>Play</MenuButton>
-        <MenuButton>Options</MenuButton>
-        <MenuButton>About</MenuButton>
-        <MenuButton>Help</MenuButton>
+        <MenuButton route={routes.LEVELS}>Play</MenuButton>
+        <MenuButton route={routes.OPTIONS}>Options</MenuButton>
+        <MenuButton route={routes.ABOUT}>About</MenuButton>
+        <MenuButton route={routes.HELP}>Help</MenuButton>
       </Box>
     </CenteringBox>
   );
