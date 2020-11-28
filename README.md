@@ -1,3 +1,3 @@
 ## AlgoRobo,
 
-# A Game Designed To Introduce Thinking Like A Programmer
+# A Game Designed To Encourage Thinking Like A Programmer
