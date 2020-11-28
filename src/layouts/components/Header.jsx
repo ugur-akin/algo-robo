@@ -1,6 +1,6 @@
 import React from 'react';
 import {Box, Typography} from '@material-ui/core';
-import CenteringBox from '../../components/CenteringBox';
+import CenteringBox from '../../components/abs/CenteringBox';
 
 const Header = () => {
   return (

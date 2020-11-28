@@ -4,7 +4,7 @@ import {Link as RouterLink} from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
-    margin: 2,
+    marginBottom: '16px',
     display: 'flex-item',
   },
 });
@@ -13,16 +13,16 @@ const MenuButton = ({children, route}) => {
   const classes = useStyles();
 
   return (
-    <RouterLink
+    <Button
       to={route}
-      component={Button}
+      component={RouterLink}
       className={classes.root}
       size="large"
       variant="outlined"
       color="primary"
     >
       {children}
-    </RouterLink>
+    </Button>
   );
 };
 
