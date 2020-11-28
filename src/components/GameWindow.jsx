@@ -5,13 +5,17 @@ import routes from '../routes';
 import CenteringBox from './CenteringBox';
 import MainMenu from './MainMenu';
 import Levels from './Levels';
+import GameLayout from '../layouts/GameLayout';
+
+// TODO(Ugur):
+//    Implement different resolutions
+//    for different devices.
 
 const GameWindow = () => {
   return (
-    <>
-      <Typography variant="h6">Welcome to Algo-Robo!</Typography>
-      <CenteringBox height="80%" margin={2} bgcolor="coral">
-        <Box height="80%" width="80%" id="game-window" bgcolor="lightblue">
+    <CenteringBox id="game-window" height="100vh" width="100vw" bgcolor="coral">
+      <Box width="1080px" height="540px" id="game" bgcolor="lightblue">
+        <GameLayout>
           <Switch>
             <Route exact path="/">
               <Redirect to={routes.MAIN} />
@@ -23,9 +27,9 @@ const GameWindow = () => {
               <Levels />
             </Route>
           </Switch>
-        </Box>
-      </CenteringBox>
-    </>
+        </GameLayout>
+      </Box>
+    </CenteringBox>
   );
 };
 

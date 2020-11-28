@@ -1,8 +1,5 @@
-html {
-  height: 100vh;
-}
-
-body,
-#root {
-  height: 100%;
+#game-window {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
