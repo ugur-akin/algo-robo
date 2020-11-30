@@ -3,3 +3,12 @@
   top: 0;
   left: 0;
 }
+
+@font-face {
+  font-family: 'Barcode';
+  src: local('Barcode'), url(./fonts/BarcodeFont.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Bazaronite';
+  src: local('Bazaronite'), url(./fonts/Bazaronite.ttf) format('truetype');
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, makeStyles} from '@material-ui/core';
 import {Link as RouterLink} from 'react-router-dom';
-import * as styles from './styles.module.scss';
+import {menuButton} from '../../styles/button.module.scss';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -12,13 +12,12 @@ const useStyles = makeStyles((theme) => ({
 
 const MenuButton = ({children, route}) => {
   const classes = useStyles();
-  console.log(styles);
   return (
     <Button
       to={route}
       component={RouterLink}
       className={classes.button}
-      classes={{contained: styles.menuButton}}
+      classes={{root: menuButton}}
       size="large"
       variant="contained"
       color="primary"

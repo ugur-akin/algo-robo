@@ -1,8 +1,10 @@
 const routes = {
-  MAIN: '/MainMenu',
+  MAIN: '/',
   LEVELS: '/Levels',
-  OPTIONS: '/Options',
-  ABOUT: '/About',
+  SETTINGS: '/Settings',
+  STORE: '/Store',
+  CUSTOMIZE: '/Customize',
+  CREDITS: '/Credits',
   HELP: '/Help',
   GAME: '/Game',
 };
