@@ -17,7 +17,7 @@ const GameWindow = () => {
       <Box width="720px" height="540px" id="game" bgcolor="lightblue">
         <GameLayout>
           <Switch>
-            <Route path={routes.MAIN}>
+            <Route exact path={routes.MAIN}>
               <MainMenu />
             </Route>
             <Route path={routes.LEVELS}>

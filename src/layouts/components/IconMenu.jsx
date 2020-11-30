@@ -7,6 +7,7 @@ import SettingsIcon from '@material-ui/icons/SettingsSharp';
 import CenteringBox from '../../components/abs/CenteringBox';
 import IconMenuButton from './IconMenuButton';
 import routes from '../../routes';
+
 // TODO(Ugur): Move sound state up
 const IconMenu = () => {
   const [muted, setMuted] = useState(false);
