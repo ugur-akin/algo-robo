@@ -1,24 +1,26 @@
 import React from 'react';
 import {Button, makeStyles} from '@material-ui/core';
 import {Link as RouterLink} from 'react-router-dom';
+import * as styles from './styles.module.scss';
 
-const useStyles = makeStyles({
-  root: {
-    marginBottom: '16px',
-    display: 'flex-item',
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(0.5),
+    borderRadius: 20,
   },
-});
+}));
 
 const MenuButton = ({children, route}) => {
   const classes = useStyles();
-
+  console.log(styles);
   return (
     <Button
       to={route}
       component={RouterLink}
-      className={classes.root}
+      className={classes.button}
+      classes={{contained: styles.menuButton}}
       size="large"
-      variant="outlined"
+      variant="contained"
       color="primary"
     >
       {children}
