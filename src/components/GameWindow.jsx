@@ -1,10 +1,10 @@
 import React from 'react';
 import {Box} from '@material-ui/core';
-import {Switch, Route, Redirect} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import routes from '../routes';
 import CenteringBox from './abs/CenteringBox';
 import MainMenu from './ui/MainMenu';
-import Levels from './Levels';
+import Levels from './ui/Levels';
 import GameLayout from '../layouts/GameLayout';
 
 // TODO(Ugur):

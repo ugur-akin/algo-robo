@@ -5,9 +5,8 @@
 //      its extension is discouraged due to convention.
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import './fonts/Bazaronite.ttf';
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>

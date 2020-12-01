@@ -1,17 +1,28 @@
-import {Box} from '@material-ui/core';
+import {Box, makeStyles} from '@material-ui/core';
 import React from 'react';
 import Header from './components/Header';
+import bgImage from './mc-bg.png';
+
+const useStyles = makeStyles({
+  root: {
+    backgroundImage: `url(${bgImage})`,
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+  },
+});
 
 const GameLayout = ({children}) => {
+  const classes = useStyles();
   return (
     <Box
       height="100%"
       display="flex"
       flexDirection="column"
       alignItems="stretch"
-      bgcolor="aquamarine"
+      className={classes.root}
     >
-      <Box id="header-container" height="20%" bgcolor="antiquewhite">
+      <Box id="header-container" height="20%">
         <Header />
       </Box>
       <Box id="content-container" flexGrow={1}>

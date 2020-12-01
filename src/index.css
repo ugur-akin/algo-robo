@@ -12,3 +12,23 @@
   font-family: 'Bazaronite';
   src: local('Bazaronite'), url(./fonts/Bazaronite.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'BubbleBath';
+  src: local('BubbleBath'), url(./fonts/BubbleBath.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'dpcomic';
+  src: local('dpcomic'), url(./fonts/dpcomic.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'prstart';
+  src: local('prstart'), url(./fonts/prstart.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'fffforwa';
+  src: local('fffforwa'), url(./fonts/fffforwa.TTF) format('truetype');
+}
+@font-face {
+  font-family: 'ZeroVelocity';
+  src: local('ZeroVelocity'), url(./fonts/zerovelo.ttf) format('truetype');
+}
