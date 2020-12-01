@@ -1,13 +1,15 @@
 import React from 'react';
-import {makeStyles, Typography} from '@material-ui/core';
+import {Box, makeStyles, Typography} from '@material-ui/core';
 import '../../fonts/zerovelo.ttf';
 
 const useStyles = makeStyles({
   title: {
     textTransform: 'uppercase',
+    display: 'inline-block',
     fontSize: 60,
     fontWeight: 525,
     fontFamily: 'ZeroVelocity',
+    textShadow: '-7px 5px 4px rgba(0,0,0,0.45)',
   },
 });
 

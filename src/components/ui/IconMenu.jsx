@@ -4,7 +4,7 @@ import SoundOffIcon from '@material-ui/icons/VolumeOffSharp';
 import SoundOnIcon from '@material-ui/icons/VolumeUpSharp';
 import HelpIcon from '@material-ui/icons/HelpOutlineSharp';
 import SettingsIcon from '@material-ui/icons/SettingsSharp';
-import CenteringBox from '../../components/abs/CenteringBox';
+import CenteringBox from '../abs/CenteringBox';
 import IconMenuButton from './IconMenuButton';
 import routes from '../../routes';
 
@@ -12,7 +12,7 @@ import routes from '../../routes';
 const IconMenu = () => {
   const [muted, setMuted] = useState(false);
   return (
-    <CenteringBox expand>
+    <CenteringBox>
       <IconMenuButton route={routes.MAIN}>
         <HomeIcon />
       </IconMenuButton>

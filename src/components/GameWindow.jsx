@@ -3,9 +3,9 @@ import {Box} from '@material-ui/core';
 import {Switch, Route} from 'react-router-dom';
 import routes from '../routes';
 import CenteringBox from './abs/CenteringBox';
-import MainMenu from './ui/MainMenu';
-import Levels from './ui/Levels';
-import GameLayout from '../layouts/GameLayout';
+import MainMenu from '../pages/MainMenu';
+import Levels from '../pages/Levels';
+import MenuLayout from '../pages/MenuLayout';
 
 // TODO(Ugur):
 //    Implement different resolutions
@@ -13,9 +13,14 @@ import GameLayout from '../layouts/GameLayout';
 
 const GameWindow = () => {
   return (
-    <CenteringBox id="game-window" height="100vh" width="100vw" bgcolor="coral">
-      <Box width="720px" height="540px" id="game" bgcolor="lightblue">
-        <GameLayout>
+    <CenteringBox
+      id="game-window"
+      height="100vh"
+      width="100vw"
+      bgcolor="darkblue"
+    >
+      <Box id="screen" width="720px" height="540px">
+        <MenuLayout>
           <Switch>
             <Route exact path={routes.MAIN}>
               <MainMenu />
@@ -24,7 +29,7 @@ const GameWindow = () => {
               <Levels />
             </Route>
           </Switch>
-        </GameLayout>
+        </MenuLayout>
       </Box>
     </CenteringBox>
   );

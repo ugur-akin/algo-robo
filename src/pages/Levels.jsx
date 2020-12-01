@@ -1,6 +1,6 @@
 import React from 'react';
-import CenteringBox from '../abs/CenteringBox';
-import ChapterCard from './ChapterCard';
+import CenteringBox from '../components/abs/CenteringBox';
+import ChapterCard from '../components/ui/ChapterCard';
 
 const Levels = () => {
   return (
