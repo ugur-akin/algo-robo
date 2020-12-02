@@ -1,6 +1,7 @@
 import React from 'react';
 import {Box, makeStyles, Typography} from '@material-ui/core';
 import bgImage from './mc-bg.png';
+import CenteringBox from '../components/abs/CenteringBox';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,9 +12,21 @@ const useStyles = makeStyles((theme) => ({
     boxSizing: 'border-box',
     padding: theme.spacing(4),
   },
+  levelName: {
+    // fontFamily: 'ZeroVelocity',
+    // fontSize: '1.6rem',
+    height: '100%',
+    width: '100%',
+    textAlign: 'center',
+    lineHeight: '200%',
+  },
+  game: {
+    boxSizing: 'border-box',
+    padding: theme.spacing(2),
+  },
 }));
 
-const Game = () => {
+const Game = ({levelName}) => {
   const classes = useStyles();
   return (
     <Box
@@ -22,16 +35,26 @@ const Game = () => {
       height="100%"
       className={classes.root}
     >
-      <Box display="flex" minHeight="100px" height="10%" bgcolor="antiquewhite">
+      <Box display="flex" minHeight="100px" height="10%">
         <Box flex="1">
-          <Typography>Level ...</Typography>
+          <Typography className={classes.levelName} variant="h3">
+            {levelName}
+          </Typography>
         </Box>
-        <Box flex="1">Menu Button</Box>
+        <Box flex="1" bgcolor="darkmagenta">
+          Menu Button
+        </Box>
       </Box>
       <Box flex="1" display="flex" flexDirection="column" bgcolor="lightcoral">
         <Box flex="1" display="flex">
-          <Box flex="1" id="game" bgcolor="lightgreen">
-            Game
+          <Box
+            id="game"
+            className={classes.game}
+            flex="1"
+            bgcolor="lightgreen"
+            expand
+          >
+            <Box height="100%" bgcolor="cornflowerblue" />
           </Box>
           <Box
             minWidth="80px"
