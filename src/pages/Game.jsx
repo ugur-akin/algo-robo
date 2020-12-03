@@ -2,6 +2,8 @@ import React from 'react';
 import {Box, makeStyles, Typography} from '@material-ui/core';
 import bgImage from './mc-bg.png';
 import CenteringBox from '../components/abs/CenteringBox';
+import CommandPanel from '../components/ui/CommandPanel';
+import Sequencer from '../components/ui/Sequencer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,17 +15,17 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(4),
   },
   levelName: {
-    // fontFamily: 'ZeroVelocity',
-    // fontSize: '1.6rem',
     height: '100%',
     width: '100%',
     textAlign: 'center',
     lineHeight: '200%',
   },
-  game: {
+  container: {
     boxSizing: 'border-box',
     padding: theme.spacing(2),
   },
+  gamePanelContainer: {},
+  commandPanelContainer: {},
 }));
 
 const Game = ({levelName}) => {
@@ -48,27 +50,32 @@ const Game = ({levelName}) => {
       <Box flex="1" display="flex" flexDirection="column" bgcolor="lightcoral">
         <Box flex="1" display="flex">
           <Box
-            id="game"
-            className={classes.game}
+            id="game-container"
+            className={`${classes.container} ${classes.gamePanelContainer}`}
             flex="1"
             bgcolor="lightgreen"
             expand
           >
-            <Box height="100%" bgcolor="cornflowerblue" />
+            <Box height="100" bgcolor="cornflowerblue" />
           </Box>
-          <Box
+          <CenteringBox
+            id="command-panel-container"
+            className={`${classes.container} ${classes.commandPanelContainer}`}
             minWidth="80px"
             width="20%"
-            id="command-panel"
             bgcolor="lightgrey"
           >
-            {' '}
-            Commands
-          </Box>
+            <CommandPanel />
+          </CenteringBox>
         </Box>
-        <Box minHeight="125px" height="15%" id="sequencer" bgcolor="darkgrey">
-          Sequencer
-        </Box>
+        <CenteringBox
+          minHeight="125px"
+          height="15%"
+          id="sequencer-container"
+          bgcolor="darkgrey"
+        >
+          <Sequencer />
+        </CenteringBox>
       </Box>
     </Box>
   );
