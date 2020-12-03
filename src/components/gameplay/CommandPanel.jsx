@@ -10,10 +10,9 @@ const commands = {
   DOWN: 'DOWN',
   F1: 'F1',
   F2: 'F2',
-  DELETE: 'DELETE',
 };
 
-const CommandPanel = () => {
+const CommandPanel = ({addCommand: add, deleteCommand: del}) => {
   const [sequence, setSequence] = useState('main');
 
   const handleSequenceChange = (event, newSequence) => setSequence(newSequence);
@@ -45,25 +44,45 @@ const CommandPanel = () => {
       </Grid>
       <Grid container item alignItems="center" justify="center">
         <Grid item container alignItems="center" justify="center">
-          <CommandButton command={commands.UP} />
+          <CommandButton
+            command={commands.UP}
+            onClick={() => add(commands.UP)}
+          />
         </Grid>
         <Grid item container alignItems="center" justify="center">
-          <CommandButton command={commands.LEFT} />
-          <CommandButton command={commands.DOWN} />
-          <CommandButton command={commands.RIGHT} />
+          <CommandButton
+            command={commands.LEFT}
+            onClick={() => add(commands.LEFT)}
+          />
+          <CommandButton
+            command={commands.DOWN}
+            onClick={() => add(commands.DOWN)}
+          />
+          <CommandButton
+            command={commands.RIGHT}
+            onClick={() => add(commands.RIGHT)}
+          />
         </Grid>
       </Grid>
       <Grid item container alignItems="center" justify="center" spacing={1}>
         <Grid item>
-          <CommandButton command={commands.F1} disabled={sequence !== 'main'} />
+          <CommandButton
+            command={commands.F1}
+            onClick={() => add(commands.F1)}
+            disabled={sequence !== 'main'}
+          />
         </Grid>
         <Grid item>
-          <CommandButton command={commands.F2} disabled={sequence !== 'main'} />
+          <CommandButton
+            command={commands.F2}
+            onClick={() => add(commands.F2)}
+            disabled={sequence !== 'main'}
+          />
         </Grid>
       </Grid>
       <Grid item container alignItems="center" justify="center" spacing={1}>
         <Grid item>
-          <CommandButton command={commands.DELETE} />
+          <CommandButton command="DELETE" onClick={del} />
         </Grid>
       </Grid>
     </Grid>

@@ -2,6 +2,16 @@ import React from 'react';
 import {Box, Grid, makeStyles, Typography} from '@material-ui/core';
 import utils from '../../utils';
 
+const icons = {
+  LEFT: '<',
+  UP: '^',
+  RIGHT: '>',
+  DOWN: 'v',
+  F1: 'F1',
+  F2: 'F2',
+  DELETE: 'DELETE',
+};
+
 const useStyles = makeStyles({
   sequencer: {
     borderSpacing: 0,
@@ -15,7 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Sequencer = () => {
+const Sequencer = ({main}) => {
   const classes = useStyles();
   return (
     <Grid container>
@@ -26,13 +36,15 @@ const Sequencer = () => {
           <table className={classes.sequencer}>
             <tbody>
               <tr>
-                {utils.range(4).map(() => (
-                  <td className={classes.sequencerCell} />
+                {utils.range(4).map((col) => (
+                  <td className={classes.sequencerCell}>{icons[main[col]]}</td>
                 ))}
               </tr>
               <tr>
-                {utils.range(4).map(() => (
-                  <td className={classes.sequencerCell} />
+                {utils.range(4).map((col) => (
+                  <td className={classes.sequencerCell}>
+                    {icons[main[col + 4]]}
+                  </td>
                 ))}
               </tr>
               <tr />

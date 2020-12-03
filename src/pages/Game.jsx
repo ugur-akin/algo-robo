@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Box, makeStyles, Typography} from '@material-ui/core';
 import bgImage from './mc-bg.png';
 import CenteringBox from '../components/abs/CenteringBox';
@@ -31,6 +31,16 @@ const useStyles = makeStyles((theme) => ({
 
 const Game = ({levelName}) => {
   const classes = useStyles();
+  const [mainSequence, setMainSequence] = useState([]);
+
+  const addCommand = (command) => {
+    setMainSequence((prevSequence) => [...prevSequence, command]);
+  };
+
+  const deleteCommand = () => {
+    setMainSequence((prevSequence) => prevSequence.slice(0, -1));
+  };
+
   return (
     <Box
       display="flex"
@@ -65,7 +75,10 @@ const Game = ({levelName}) => {
             width="20%"
             bgcolor="lightgrey"
           >
-            <CommandPanel />
+            <CommandPanel
+              addCommand={addCommand}
+              deleteCommand={deleteCommand}
+            />
           </CenteringBox>
         </Box>
         <CenteringBox
@@ -74,7 +87,7 @@ const Game = ({levelName}) => {
           id="sequencer-container"
           bgcolor="darkgrey"
         >
-          <Sequencer />
+          <Sequencer main={mainSequence} />
         </CenteringBox>
       </Box>
     </Box>
