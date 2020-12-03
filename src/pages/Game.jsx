@@ -2,8 +2,9 @@ import React from 'react';
 import {Box, makeStyles, Typography} from '@material-ui/core';
 import bgImage from './mc-bg.png';
 import CenteringBox from '../components/abs/CenteringBox';
-import CommandPanel from '../components/ui/CommandPanel';
-import Sequencer from '../components/ui/Sequencer';
+import CommandPanel from '../components/gameplay/CommandPanel';
+import Sequencer from '../components/gameplay/Sequencer';
+import GameScreen from '../components/gameplay/GameScreen';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,9 +55,8 @@ const Game = ({levelName}) => {
             className={`${classes.container} ${classes.gamePanelContainer}`}
             flex="1"
             bgcolor="lightgreen"
-            expand
           >
-            <Box height="100" bgcolor="cornflowerblue" />
+            <GameScreen />
           </Box>
           <CenteringBox
             id="command-panel-container"

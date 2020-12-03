@@ -20,7 +20,7 @@ const CommandPanel = () => {
   return (
     <Grid container spacing={2}>
       <Grid item>
-        <Typography variant="body" align="center" display="block">
+        <Typography variant="body1" align="center" display="block">
           COMMANDS
         </Typography>
       </Grid>
@@ -33,7 +33,7 @@ const CommandPanel = () => {
           aria-label="sequence selection"
         >
           <ToggleButton value="main" aria-label="Main Sequence">
-            Main
+            Mn
           </ToggleButton>
           <ToggleButton value="F1" aria-label="F1 Sequence">
             F1
@@ -55,10 +55,10 @@ const CommandPanel = () => {
       </Grid>
       <Grid item container alignItems="center" justify="center" spacing={1}>
         <Grid item>
-          <CommandButton command={commands.F1} />
+          <CommandButton command={commands.F1} disabled={sequence === 'F1'} />
         </Grid>
         <Grid item>
-          <CommandButton command={commands.F2} />
+          <CommandButton command={commands.F2} disabled={sequence === 'F2'} />
         </Grid>
       </Grid>
       <Grid item container alignItems="center" justify="center" spacing={1}>
