@@ -55,10 +55,10 @@ const CommandPanel = () => {
       </Grid>
       <Grid item container alignItems="center" justify="center" spacing={1}>
         <Grid item>
-          <CommandButton command={commands.F1} disabled={sequence === 'F1'} />
+          <CommandButton command={commands.F1} disabled={sequence !== 'main'} />
         </Grid>
         <Grid item>
-          <CommandButton command={commands.F2} disabled={sequence === 'F2'} />
+          <CommandButton command={commands.F2} disabled={sequence !== 'main'} />
         </Grid>
       </Grid>
       <Grid item container alignItems="center" justify="center" spacing={1}>

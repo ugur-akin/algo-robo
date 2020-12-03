@@ -2,6 +2,7 @@ import React from 'react';
 import {Box, makeStyles} from '@material-ui/core';
 import utils from '../../utils';
 import CenteringBox from '../abs/CenteringBox';
+import PlayerIndicator from './PlayerIndicator';
 
 const levelLayout = {
   width: 5,
@@ -23,11 +24,11 @@ const useStyles = makeStyles({
     height: '20px',
     width: '20px',
     border: '1px solid black',
-    textAlign: 'center',
+    backgroundColor: 'lightgrey',
   },
 });
 
-const GameScreen = ({pos = [2, 2]}) => {
+const GameScreen = ({pos = [0, 0]}) => {
   const {width: numCols, height: numRows, tiles} = levelLayout;
   const classes = useStyles();
   return (
@@ -44,7 +45,7 @@ const GameScreen = ({pos = [2, 2]}) => {
                     key={col}
                     className={tiles[row]?.includes(col) ? classes.cell : null}
                   >
-                    {pos[0] === row && pos[1] === col && 'P'}
+                    {pos[0] === row && pos[1] === col && <PlayerIndicator />}
                   </td>
                 ))}
               </tr>
