@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Box, Grid, Typography} from '@material-ui/core';
+import {ToggleButton, ToggleButtonGroup} from '@material-ui/lab';
 import CommandButton from './CommandButton';
 
 const commands = {
@@ -13,12 +14,34 @@ const commands = {
 };
 
 const CommandPanel = () => {
+  const [sequence, setSequence] = useState('main');
+
+  const handleSequenceChange = (event, newSequence) => setSequence(newSequence);
   return (
-    <Grid height="100%" container spacing={2}>
+    <Grid container spacing={2}>
       <Grid item>
         <Typography variant="body" align="center" display="block">
           COMMANDS
         </Typography>
+      </Grid>
+      <Grid item>
+        <ToggleButtonGroup
+          size="small"
+          value={sequence}
+          exclusive
+          onChange={handleSequenceChange}
+          aria-label="sequence selection"
+        >
+          <ToggleButton value="main" aria-label="Main Sequence">
+            Main
+          </ToggleButton>
+          <ToggleButton value="F1" aria-label="F1 Sequence">
+            F1
+          </ToggleButton>
+          <ToggleButton value="F2" aria-label="F2 Sequence">
+            F2
+          </ToggleButton>
+        </ToggleButtonGroup>
       </Grid>
       <Grid container item alignItems="center" justify="center">
         <Grid item container alignItems="center" justify="center">
