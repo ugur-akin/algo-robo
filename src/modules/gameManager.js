@@ -9,19 +9,30 @@ const GameStates = {
   SIMULATION_SUCCEEDED: 'SimulationSucceded',
 };
 
-const SIMULATION_INTERVAL = 150;
+const SIMULATION_INTERVAL = 1000;
 
 const useGameManager = () => {
   const [gameState, setGameState] = useState(GameStates.LOADING);
 
   // TODO(Ugur): Modify with correct simulation logic.
-  const simulationSucceded = () => Math.random() < 0.4;
-  const simulationFailed = () => Math.random() < 0.2;
+  const simulationSucceded = () => {
+    const rnd = Math.random();
+    console.log(`Rolled ${rnd} for success.`);
+    return rnd < 0.1;
+  };
+  const simulationFailed = () => {
+    const rnd = Math.random();
+    console.log(`Rolled ${rnd} for failure.`);
+    return rnd < 0.05;
+  };
 
   // ------------ Simulation Side Effect ----------------
   useEffect(() => {
+    let step = 1;
     const runNextStep = () => {
       // Run next step of the simulation here.
+      console.log(`Simulating step ${step}`);
+      step += 1;
 
       // After each step, check following:
       if (simulationSucceded()) {
@@ -47,13 +58,14 @@ const useGameManager = () => {
     /*
      NOTE(Ugur): 
         The motivation behind this interface is that:
-          a) We want a procedural interface for the gameManager
-             module and,
+          a) We want to encourage a procedural workflow for the use of this
+             module through an interface with names that better reflect state changes
+             and their purpose,
           b) we want to contain all the logic managing the gameState
              within the module itself.
         We provide an interface so components can interact with the
         state, but only through the procedures we expose. The interface
-        will be modified/extended as more use cases manifest.  
+        can or will be modified/extended as more use cases manifest.  
      */
 
     // Status Setters
@@ -66,10 +78,16 @@ const useGameManager = () => {
     stopSimulation: () => {
       setGameState(GameStates.SIMULATION_INTERRUPTED);
     },
+    restartLevel: () => {
+      setGameState(GameStates.LOADING);
+    },
 
     // Status Getters
-    isLoading: () => {
+    levelIsLoading: () => {
       return gameState === GameStates.LOADING;
+    },
+    awaitingSimulationStart: () => {
+      return gameState === GameStates.EDITING;
     },
     isSimulating: () => {
       return gameState === GameStates.SIMULATING;
