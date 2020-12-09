@@ -13,12 +13,7 @@ import MenuLayout from '../pages/MenuLayout';
 
 const GameWindow = () => {
   return (
-    <CenteringBox
-      id="game-window"
-      height="100vh"
-      width="100vw"
-      bgcolor="darkblue"
-    >
+    <CenteringBox id="game-window" bgcolor="darkblue">
       <Box id="screen" width="720px" height="540px">
         <MenuLayout>
           <Switch>
