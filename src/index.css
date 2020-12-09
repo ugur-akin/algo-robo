@@ -1,8 +1,37 @@
-html {
-  height: 100vh;
+#game-window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(var(--vw, 1vw) * 100);
+  height: calc(var(--vh, 1vh) * 100);
+  overflow: hidden;
 }
 
-body,
-#root {
-  height: 100%;
+@font-face {
+  font-family: 'Barcode';
+  src: local('Barcode'), url(./fonts/BarcodeFont.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Bazaronite';
+  src: local('Bazaronite'), url(./fonts/Bazaronite.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'BubbleBath';
+  src: local('BubbleBath'), url(./fonts/BubbleBath.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'dpcomic';
+  src: local('dpcomic'), url(./fonts/dpcomic.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'prstart';
+  src: local('prstart'), url(./fonts/prstart.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'fffforwa';
+  src: local('fffforwa'), url(./fonts/fffforwa.TTF) format('truetype');
+}
+@font-face {
+  font-family: 'ZeroVelocity';
+  src: local('ZeroVelocity'), url(./fonts/zerovelo.ttf) format('truetype');
 }

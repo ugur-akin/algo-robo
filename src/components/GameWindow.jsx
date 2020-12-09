@@ -1,29 +1,31 @@
 import React from 'react';
 import {Box} from '@material-ui/core';
-import {useLocation} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import routes from '../routes';
-import CenteringBox from './CenteringBox';
+import CenteringBox from './abs/CenteringBox';
+import MainMenu from '../pages/MainMenu';
+import Levels from '../pages/Levels';
+import MenuLayout from '../pages/MenuLayout';
+
+// TODO(Ugur):
+//    Implement different resolutions
+//    for different devices.
 
 const GameWindow = () => {
-  const gameRoute = useLocation().pathname;
-
-  let windowContent;
-  switch (gameRoute) {
-    default:
-    case routes.MAIN:
-      windowContent = <h3>Main</h3>;
-      break;
-    case routes.LEVELSELECT:
-      windowContent = <h3>Level Select</h3>;
-      break;
-    case routes.OPTIONS:
-      windowContent = <h3>Options</h3>;
-      break;
-  }
-
   return (
-    <CenteringBox>
-      <Box id="game-window">{windowContent}</Box>
+    <CenteringBox id="game-window" bgcolor="darkblue">
+      <Box id="screen" width="720px" height="540px">
+        <MenuLayout>
+          <Switch>
+            <Route exact path={routes.MAIN}>
+              <MainMenu />
+            </Route>
+            <Route path={routes.LEVELS}>
+              <Levels />
+            </Route>
+          </Switch>
+        </MenuLayout>
+      </Box>
     </CenteringBox>
   );
 };
