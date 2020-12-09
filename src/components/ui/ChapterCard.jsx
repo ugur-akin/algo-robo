@@ -6,13 +6,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: '250px',
     width: '300px',
-    border: '3px solid #000000',
+    border: '3px solid black',
     display: 'flex',
     flexDirection: 'column',
   },
   divider: {
     height: 3,
-    backgroundColor: '#000000',
+    backgroundColor: 'black',
   },
   titleContainer: {
     backgroundColor: 'lightblue',

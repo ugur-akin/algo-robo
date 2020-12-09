@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-import HomeIcon from '@material-ui/icons/HomeSharp';
-import SoundOffIcon from '@material-ui/icons/VolumeOffSharp';
-import SoundOnIcon from '@material-ui/icons/VolumeUpSharp';
-import HelpIcon from '@material-ui/icons/HelpOutlineSharp';
-import SettingsIcon from '@material-ui/icons/SettingsSharp';
+import {
+  HomeSharp as HomeIcon,
+  VolumeOffSharp as SoundOffIcon,
+  VolumeUpSharp as SoundOnIcon,
+  HelpOutlineSharp as HelpIcon,
+  SettingsSharp as SettingsIcon,
+} from '@material-ui/icons/';
 import CenteringBox from '../abs/CenteringBox';
 import IconMenuButton from './IconMenuButton';
 import routes from '../../routes';

@@ -2,6 +2,9 @@
   position: absolute;
   top: 0;
   left: 0;
+  width: calc(var(--vw, 1vw) * 100);
+  height: calc(var(--vh, 1vh) * 100);
+  overflow: hidden;
 }
 
 @font-face {

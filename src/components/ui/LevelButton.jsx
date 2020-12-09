@@ -3,8 +3,8 @@ import {IconButton, makeStyles} from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
-    border: 'solid 3.3px #000000A0',
-    backgroundColor: '#00A0DF00',
+    border: 'solid 3.3px rgba(0,0,0,0.5)',
+    backgroundColor: 'rgb(0,160,223)',
   },
 });
 
