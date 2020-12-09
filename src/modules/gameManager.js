@@ -14,7 +14,7 @@ const SIMULATION_INTERVAL = 150;
 const useGameManager = () => {
   const [gameState, setGameState] = useState(GameStates.LOADING);
 
-  // TODO: Modify with correct simulation logic.
+  // TODO(Ugur): Modify with correct simulation logic.
   const simulationSucceded = () => Math.random() < 0.4;
   const simulationFailed = () => Math.random() < 0.2;
 
@@ -44,6 +44,19 @@ const useGameManager = () => {
 
   // ---------------- INTERFACE -----------------------
   const gameManagerInterface = {
+    /*
+     NOTE(Ugur): 
+        The motivation behind this interface is that:
+          a) We want a procedural interface for the gameManager
+             module and,
+          b) we want to contain all the logic managing the gameState
+             within the module itself.
+        We provide an interface so components can interact with the
+        state, but only through the procedures we expose. The interface
+        will be modified/extended as more use cases manifest.  
+     */
+
+    // Status Setters
     endLoadingStage: () => {
       setGameState(GameStates.EDITING);
     },
@@ -52,6 +65,20 @@ const useGameManager = () => {
     },
     stopSimulation: () => {
       setGameState(GameStates.SIMULATION_INTERRUPTED);
+    },
+
+    // Status Getters
+    isLoading: () => {
+      return gameState === GameStates.LOADING;
+    },
+    isSimulating: () => {
+      return gameState === GameStates.SIMULATING;
+    },
+    simulationSucceded: () => {
+      return gameState === GameStates.SIMULATION_SUCCEEDED;
+    },
+    simulationFailed: () => {
+      return gameState === GameStates.SIMULATION_FAILED;
     },
   };
   // ---------------------------------------------------
