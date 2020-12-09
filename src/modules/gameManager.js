@@ -58,11 +58,12 @@ const useGameManager = () => {
     /*
      NOTE(Ugur): 
         The motivation behind this interface is that:
-          a) We want to encourage a procedural workflow for the use of this
-             module through an interface with names that better reflect state changes
+          a) We want to encourage a procedural workflow
+             for the use of this module through an interface
+             with names that better reflect state changes
              and their purpose,
-          b) we want to contain all the logic managing the gameState
-             within the module itself.
+          b) we want to contain all the logic managing 
+             the gameState within the module itself.
         We provide an interface so components can interact with the
         state, but only through the procedures we expose. The interface
         can or will be modified/extended as more use cases manifest.  
