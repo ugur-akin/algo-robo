@@ -13,5 +13,4 @@ const utils = {
   },
 };
 
-console.log(utils.range(8));
 export default utils;
