@@ -8,8 +8,11 @@ const baseThemeSettings = {
     cellSize: 25,
     zIndex: {
       default: 0,
-      backdropElement: 5,
+      backdropFilter: 5,
       focused: 10,
+    },
+    color: {
+      backdropFilter: 'rbga(0,0,0,0.25)',
     },
   },
 };

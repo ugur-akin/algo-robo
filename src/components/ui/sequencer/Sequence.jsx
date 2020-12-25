@@ -5,7 +5,7 @@ import utils from '../../../utils';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    position: 'absolute',
+    display: 'inline-block',
     backgroundColor: 'lightgrey',
     borderSpacing: 0,
     borderCollapse: 'collapse',
@@ -73,7 +73,7 @@ const Row = ({length, commands, highlightIndex}) => (
 );
 
 const Sequence = ({
-  name,
+  label,
   length,
   numRows,
   sequence,
@@ -88,7 +88,7 @@ const Sequence = ({
     <table className={clsx(classes.root, isSimulationFocus && classes.focus)}>
       <thead>
         <tr>
-          <th className={classes.label} colSpan={width}>{`${name}:`}</th>
+          <th className={classes.label} colSpan={width}>{`${label}:`}</th>
         </tr>
       </thead>
       <tbody>
