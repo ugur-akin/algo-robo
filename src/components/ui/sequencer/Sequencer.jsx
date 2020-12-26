@@ -14,7 +14,14 @@ const commands = {
 const sequenceMain = {
   label: 'Main',
   length: 8,
-  sequence: [commands.LEFT],
+  sequence: [
+    commands.LEFT,
+    commands.RIGHT,
+    commands.UP,
+    commands.DOWN,
+    commands.F1,
+    commands.F2,
+  ],
 };
 
 const sequenceF1 = {
@@ -42,16 +49,16 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'stretch',
     justifyContent: 'center',
-    '& > table': {
+    '& > *': {
       margin: theme.spacing(2),
     },
   },
 }));
 
 const Sequencer = ({
-  isSimulating = false,
-  simulLabel,
-  simulIndex,
+  isSimulating = true,
+  simulLabel = 'Main',
+  simulIndex = 3,
   sequences = [sequenceMain, sequenceF1],
 }) => {
   const classes = useStyles();

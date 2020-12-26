@@ -3,24 +3,48 @@ import React from 'react';
 import clsx from 'clsx';
 import utils from '../../../utils';
 import SequenceRow from './SequenceRow';
+import SequenceCell from './SequenceCell';
+import CommandCell from './CommandCell';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: 'lightgrey',
-    borderSpacing: '3px',
-    border: 'solid 1px black',
+    position: 'relative',
+    display: 'grid',
+    gridTemplateRows: (props) =>
+      `repeat(${props.numRows + 1}, ${theme.sequence.cellSize})`,
+    gridTemplateColumns: (props) =>
+      `repeat(${props.numCols}, ${theme.sequence.cellSize})`,
+    gap: '3px',
+    border: 'solid 2px rgba(0,0,0,0.7)',
     zIndex: theme.sequence.zIndex.default,
     borderRadius: '5px',
     padding: '2px',
   },
+  cell: {
+    borderRadius: '2px',
+    border: '1px solid rgba(0,0,0,0.75)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'darkgrey',
+  },
+  highlighted: {
+    backgroundColor: '#e6dd7a',
+    '& > div': {
+      backgroundColor: 'inherit',
+      color: '#000',
+    },
+  },
   focus: {
+    position: 'absolute',
     top: '-5px',
     left: '5px',
     zIndex: theme.sequence.zIndex.focused,
     boxShadow: '-5px 5px 5px 2px rgba(0,0,0,0.5)',
   },
   label: {
-    textAlign: 'left',
+    gridColumn: '1 / -1',
+    lineHeight: theme.sequence.cellSize,
   },
 }));
 
@@ -53,45 +77,31 @@ const Sequence = ({
   isSimulationFocus = false,
   simulationIndex,
 }) => {
-  const classes = useStyles({isSimulationFocus});
-  const width = Math.trunc(length / numRows);
-  const lastRowWidth = length % numRows || length / numRows;
-  const lastRowCommands = sequence.slice(-lastRowWidth);
+  const numCols = Math.ceil(length / numRows);
+  const styleProps = {
+    color: 'red',
+    isSimulationFocus,
+    numRows,
+    numCols,
+  };
+  console.log(styleProps);
+  const classes = useStyles(styleProps);
   return (
-    <table className={clsx(classes.root, isSimulationFocus && classes.focus)}>
-      <thead>
-        <tr>
-          <th className={classes.label} colSpan={width}>{`${label}:`}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {utils.range(numRows - 1).map((y) => {
-          const seqIdx = utils.from2D(0, y, width);
-          const rowHighlightIndex = getHighlightIndexForRow(
-            y,
-            width,
-            simulationIndex,
-          );
-          return (
-            <SequenceRow
-              key={y}
-              length={width}
-              commands={sequence.slice(seqIdx, width)}
-              highlightIndex={rowHighlightIndex}
-            />
-          );
-        })}
-        <SequenceRow
-          length={lastRowWidth}
-          commands={lastRowCommands}
-          highlightIndex={getHighlightIndexForRow(
-            numRows - 1,
-            width,
-            simulationIndex,
-          )}
-        />
-      </tbody>
-    </table>
+    <div className={clsx(classes.root, isSimulationFocus && classes.focus)}>
+      <div className={classes.label}>{`${label}:`}</div>
+      {utils.range(length).map((cellIdx) => {
+        const highlighted = cellIdx < simulationIndex;
+        const command = sequence[cellIdx];
+        return (
+          <div
+            key={cellIdx}
+            className={clsx(classes.cell, highlighted && classes.highlighted)}
+          >
+            {command && <CommandCell command={command} />}
+          </div>
+        );
+      })}
+    </div>
   );
 };
 

@@ -1,15 +1,16 @@
 import {makeStyles} from '@material-ui/core';
+import clsx from 'clsx';
 import React from 'react';
 
 const useStyles = makeStyles({
   root: {
     borderRadius: 'inherit',
-    width: '95%',
-    height: '95%',
-    margin: 'auto',
+    width: '22px',
+    height: '22px',
+    lineHeight: '22px',
+    textAlign: 'center',
     backgroundColor: '#1B1B1B', // matte black
     color: 'white',
-    fontSize: '1em',
   },
 });
 

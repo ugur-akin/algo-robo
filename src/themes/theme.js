@@ -5,7 +5,7 @@ const baseThemeSettings = {
     fontsize: 12,
   },
   sequence: {
-    cellSize: 25,
+    cellSize: '25px',
     zIndex: {
       default: 0,
       backdropFilter: 5,
