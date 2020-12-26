@@ -2,34 +2,6 @@ import {makeStyles} from '@material-ui/core';
 import React from 'react';
 import Sequence from './Sequence';
 
-const commands = {
-  LEFT: 'LEFT',
-  UP: 'UP',
-  RIGHT: 'RIGHT',
-  DOWN: 'DOWN',
-  F1: 'F1',
-  F2: 'F2',
-};
-
-const sequenceMain = {
-  label: 'Main',
-  length: 8,
-  sequence: [
-    commands.LEFT,
-    commands.RIGHT,
-    commands.UP,
-    commands.DOWN,
-    commands.F1,
-    commands.F2,
-  ],
-};
-
-const sequenceF1 = {
-  label: 'F1',
-  length: 4,
-  sequence: [],
-};
-
 const useStyles = makeStyles((theme) => ({
   root: {
     position: 'relative',
@@ -40,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     height: '100%',
     width: '100%',
-    backgroundColor: theme.sequence.color.backdropFilter,
+    backgroundColor: 'rgba(0,0,0,0.25)',
     zIndex: theme.sequence.zIndex.backdropFilter,
   },
   sequenceContainer: {
@@ -56,19 +28,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Sequencer = ({
-  isSimulating = true,
-  simulLabel = 'Main',
-  simulIndex = 3,
-  sequences = [sequenceMain, sequenceF1],
+  isSimulating = false,
+  focusedSequence,
+  simulationIndices,
+  sequences,
 }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
       {isSimulating && <div className={classes.backdrop} />}
       <div className={classes.sequenceContainer}>
-        {sequences.map(({label, length, sequence}) => {
-          const isSimulationFocus = isSimulating && simulLabel === label;
-          const simulIndexProp = isSimulationFocus && simulIndex;
+        {sequences.map(({label, length, sequence}, seqIdx) => {
+          const isSimulationFocus = isSimulating && focusedSequence === label;
+          const simulIndexProp = isSimulating && simulationIndices[seqIdx];
           return (
             <Sequence
               key={label}

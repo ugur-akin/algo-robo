@@ -11,6 +11,15 @@ const useStyles = makeStyles({
     textAlign: 'center',
     backgroundColor: '#1B1B1B', // matte black
     color: 'white',
+    fontSize: '1em',
+  },
+  highlighted: {
+    backgroundColor: '#e6dd7a', // yellow
+    color: '#000',
+  },
+  next: {
+    backgroundColor: '#027CFF', // blue
+    color: '#fff',
   },
 });
 
@@ -23,9 +32,19 @@ const commandSymbols = {
   F2: 'F2',
 };
 
-const CommandCell = ({command}) => {
+const CommandCell = ({command, highlighted, next}) => {
   const classes = useStyles();
-  return <div className={classes.root}>{commandSymbols[command]}</div>;
+  return (
+    <div
+      className={clsx(
+        classes.root,
+        highlighted && classes.highlighted,
+        next && classes.next,
+      )}
+    >
+      {commandSymbols[command]}
+    </div>
+  );
 };
 
 export default CommandCell;

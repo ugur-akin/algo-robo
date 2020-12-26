@@ -11,9 +11,6 @@ const baseThemeSettings = {
       backdropFilter: 5,
       focused: 10,
     },
-    color: {
-      backdropFilter: 'rbga(0,0,0,0.25)',
-    },
   },
 };
 
