@@ -2,26 +2,22 @@ import {makeStyles} from '@material-ui/core';
 import React from 'react';
 import clsx from 'clsx';
 import utils from '../../../utils';
+import SequenceRow from './SequenceRow';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'inline-block',
     backgroundColor: 'lightgrey',
-    borderSpacing: 0,
-    borderCollapse: 'collapse',
-    textAlign: 'center',
+    borderSpacing: '3px',
+    border: 'solid 1px black',
     zIndex: theme.sequence.zIndex.default,
+    borderRadius: '5px',
+    padding: '2px',
   },
   focus: {
     top: '-5px',
     left: '5px',
     zIndex: theme.sequence.zIndex.focused,
     boxShadow: '-5px 5px 5px 2px rgba(0,0,0,0.5)',
-  },
-  cell: {
-    width: theme.sequence.cellSize,
-    height: theme.sequence.cellSize,
-    border: 'solid 1px black',
   },
   label: {
     textAlign: 'left',
@@ -46,31 +42,8 @@ const getHighlightIndexForRow = (y, rowWidth, highlightIndex) => {
   return numHighlighted;
 };
 
-const CommandCell = ({command, highlighted = false}) => (
-  <td
-    style={{
-      width: '25px',
-      height: '25px',
-      border: 'solid 1px black',
-      backgroundColor: highlighted ? 'yellow' : 'inherit',
-    }}
-  />
-);
-
-const Row = ({length, commands, highlightIndex}) => (
-  <tr>
-    {utils.range(length).map((x) => {
-      const command = commands[x] || commands.EMPTY;
-      return (
-        <CommandCell
-          key={x}
-          command={command}
-          highlighted={x < highlightIndex}
-        />
-      );
-    })}
-  </tr>
-);
+// TODO(Ugur): Change to grid display, and explore
+//            gradients for themes/customization.
 
 const Sequence = ({
   label,
@@ -100,7 +73,7 @@ const Sequence = ({
             simulationIndex,
           );
           return (
-            <Row
+            <SequenceRow
               key={y}
               length={width}
               commands={sequence.slice(seqIdx, width)}
@@ -108,7 +81,7 @@ const Sequence = ({
             />
           );
         })}
-        <Row
+        <SequenceRow
           length={lastRowWidth}
           commands={lastRowCommands}
           highlightIndex={getHighlightIndexForRow(
