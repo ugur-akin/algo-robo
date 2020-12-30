@@ -6,7 +6,6 @@ import Tile from './Tile';
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: 'darkgrey',
     borderRadius: '5px',
     maxWidth: '100%',
     height: '100%',
@@ -23,35 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-const sampleTiles = {
-  0: {
-    0: 'default',
-    1: 'default',
-    2: 'default',
-  },
-  1: {
-    1: 'default',
-    2: 'default',
-    3: 'default',
-  },
-  2: {
-    3: 'default',
-  },
-  3: {
-    3: 'default',
-  },
-  4: {
-    3: 'default',
-    4: 'default',
-  },
-};
-
-const GameScreen = ({
-  width = 5,
-  height = 5,
-  tiles = sampleTiles,
-  playerPos = [0, 0],
-}) => {
+const GameScreen = ({width, height, tiles, playerPos, litTiles}) => {
   const classes = useStyles({width, height});
   return (
     <div className={classes.root}>
@@ -61,7 +32,7 @@ const GameScreen = ({
             const numX = Number(x);
             const numY = Number(y);
             const type = tiles[y][x];
-            const lit = !!Math.round(Math.random());
+            const lit = litTiles.includes(utils.from2D(numX, numY, width));
             return (
               <Tile
                 key={utils.from2D(numX, numY, width)}
