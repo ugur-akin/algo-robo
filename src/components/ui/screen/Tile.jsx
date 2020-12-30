@@ -29,6 +29,9 @@ const useStyles = makeStyles({
   },
 });
 
+// TODO(Ugur): It's probably a good idea to memoize
+//             this component, will test first.
+
 const Tile = ({type, gridRow, gridCol, lit, children}) => {
   const classes = useStyles({gridRow, gridCol, type});
   return (
